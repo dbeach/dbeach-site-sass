@@ -1,0 +1,101 @@
+
+// Imports -------------------------------------------------------------------
+
+
+// Grid 
+
+
+// Measurements
+$vertical-grid: 18px
+$baseline: $vertical-grid
+$bl: $vertical-grid
+$container-radius: 4px
+$golden-ratio: 1.61803399
+
+// Type
+$sans-serif: 'Oxygen', helvetica, arial, sans-serif
+$serif: 'Enriqueta', georgia, times new roman, serif
+$normal: normal normal normal
+$gfonts: 'Yanone Kaffeesatz', helvetica, arial, sans-serif
+
+
+// Vertical grid helpers for Type
+=type-grid($font-size, $line-height, $above: false, $below: false, $spacing-only: false)
+  @if $font-size and not $spacing-only
+    font-size: $font-size
+  @if $line-height and not $spacing-only
+    line-height: $vertical-grid * $line-height
+  @if $above and not $below
+    padding-top: $vertical-grid * $above
+  @if $below and not $above
+    padding-bottom: $vertical-grid * $below
+  @if $above and $below
+    padding: #{$vertical-grid * $above} 0 #{$vertical-grid * $below}
+
+// Default font families
+@function sans-serif($font)
+  @return '#{$font}', helvetica, arial, sans-serif
+@function serif($font)
+  @return  '#{$font}', georgia, times new roman, serif
+
+
+@function bl($multiple: 1, $modifier: 0)
+  @return ceil($bl * $multiple) + $modifier
+
+// Colors
+$c1: hsla(25, 85%, 56%, 1)
+$c2: hsla(200, 100%, 79%, 1)
+$c3: hsla(22, 65%, 50%, 1)
+$c: hsla(0, 0%, 0%, 1)
+$lighttan: hsl(33, 66%, 93%)
+
+// Functions
+
+// Mixins
+=debug-bg
+  background: hsla(0, 0, 0%, .05)
+
+=clearfixer
+  zoom: 1
+  &::before, &::after
+    content: ""
+    display: table
+  &::after
+    clear: both
+
+// Default heading styles for articles
+=article-headings
+  @for $i from 1 through 6
+    h#{$i}
+      font-size: 2em - (($i - 1) * .5)
+      color: adjust-color($c2, $lightness: - (10 * $i), $saturation: - ($i * 10))
+
+
+@mixin grid($columns, $gutter: 0, $span: 1, $last: false, $nth: false, $prepend: 0, $append: 0, $padding-allowance: 0) 
+  // Single column minus gutters
+
+  $column-width: (100 - ($columns - 1) * $gutter) / $columns
+  // Column width times # of columns + inner gutters
+  width: $column-width * $span + $gutter * ($span - 1) - $padding-allowance + 0%
+  @if $last
+    margin-right: 0
+  @else
+    margin-right: $gutter + 0%
+
+  @if $prepend > 0
+    padding-left: ($column-width + $gutter) * $prepend + 0%
+
+  @if $append > 0
+    padding-right: $column-width * $append + $gutter * ($append - 1) + 0%
+
+  @if $nth 
+    &:nth-child(#{$columns}n)
+      margin-right: 0
+
+=nav-color($bg: none, $color: #666)
+  [role='banner']
+    background: $bg
+  [role='navigation']
+    a,
+    a:hover
+      color: $color

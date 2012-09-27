@@ -1,0 +1,118 @@
+.design,
+.portfolio
+  +nav-color(#444, #fff)
+
+.design 
+  .content
+    background: url(../images/design_bg.png) no-repeat bottom right
+  footer
+    margin-top: 0
+
+
+// Image list with thumbnails for portfolio items
+.portfolio_image_list
+  +grid(3, 5, 3)
+  list-style: none
+  display: block
+  position: relative
+  float: left
+  padding: 0
+  +clearfixer
+  li
+    display: block
+    float: left
+    margin-top: 10%
+    margin-bottom: 1.5%
+    padding: 0
+  img
+    position: absolute
+    z-index: 5
+    bottom: 10%
+    left: 10%
+    width: 80%
+    +transition-duration(.5s)
+    +box-shadow(0px 0px 0px 1px hsla(0, 0, 0, .2))
+  .img_link
+    display: block
+    position: relative
+    height: 100px
+    width: 100%
+    margin-bottom: bl(1)
+    background: hsla(0, 0, 80, .5)
+    +border-radius(5px)
+    text-align: center
+    +transition-duration(.5s)
+    &::before
+      +transition-duration(.5s)
+      content: ''
+      display: none
+      position: absolute
+      bottom: -1px
+      margin: 0 10%
+      width: 80%
+      height: 8px
+      +background-image(linear-gradient(hsla(0, 0, 0, .15), hsla(0, 0, 0, 0)))
+  li:hover
+    .img_link
+      background: change-color($c2, $lightness: 65, $alpha: .5)
+      //&::before
+        display: block
+    img
+      +box-shadow(0px 0px 0px 2px hsla(0, 0, 0, .7))
+.design 
+  .portfolio_image_list
+    +grid(3, 5, 2)          
+      
+// Inline list of services
+.services_list
+  margin: 0
+  padding: 0
+  overflow: hidden
+  li
+    display: block
+    padding: 0 1em 0 .5em
+    list-style: none
+    &::before
+      content: '✻'
+      position: relative
+      left: -.5em
+      color: $c3
+
+// Design Aside
+.design
+  aside
+    +grid(3, 5, 1, $last: true)
+    overflow: hidden
+    font-size: .85em
+    color: #666
+
+
+// Media Queries
+@media (min-width: 1000px)
+  .design .portfolio_image_list
+    li
+      +grid(3, 1.5)
+  .portfolio .portfolio_image_list
+    li
+      +grid(4, 1.5)
+
+@media (max-width: 1000px)
+  .design .portfolio_image_list
+    li
+      +grid(2, 1.5)
+  .portfolio .portfolio_image_list
+    li
+      +grid(3, 1.5)
+@media (max-width: 600px), (-webkit-min-device-pixel-ratio: 2)
+  .design
+    aside
+      clear: both
+      width: 100%
+    .content
+      padding-bottom: bl(12)
+    .portfolio_image_list
+      width: 100%
+      margin-right: 0
+  .services_list
+    li
+      float: none

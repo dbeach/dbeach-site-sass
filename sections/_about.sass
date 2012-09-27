@@ -1,0 +1,40 @@
+
+.about-facts,
+.about-props
+  float: left
+  +grid(2, 3, 1, $nth: false)
+
+  h2
+    font-weight: normal
+    text-transform: uppercase
+    font-size: 1em
+    margin-bottom: 2em
+    color: darken($c2, 40)
+
+.about-props
+  margin-right: 0
+
+
+.about-intro
+  display: block
+  overflow: hidden
+  padding: bl(1.5) 0
+  margin: bl(1.5) 0
+  border: 1px dashed #ddd
+  border-width: 1px 0
+  img,
+  p
+    float: left
+  img
+    +grid(5, 3, 1)
+    height: auto
+  p
+    +grid(5, 5, 4, $last: true)
+    font-family: $serif
+    font-size: 1.4em
+
+@media (max-width: 700px), (-webkit-min-device-pixel-ratio: 2)
+  .about-facts,
+  .about-props
+    width: 100%
+    float: none

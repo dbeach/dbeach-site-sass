@@ -1,0 +1,96 @@
+.writing,
+.post
+  +nav-color(adjust-color($c2, $lightness: -48, $saturation: -30), #fff)
+
+.writing
+  .posts_list
+    overflow: hidden
+    margin: bl(2) 0 0
+    padding-bottom: bl(3)
+    border-bottom: 1px dashed #ddd
+    li
+      +grid(3, 3, 1)
+      padding: 1.5em 0 .5em
+      float: left
+      border-top: 1px solid desaturate($c2, 40)
+      min-height: 13em
+    a
+      font-family: $serif
+      font-size: 1.3em
+
+
+#book-list
+  width: 100%
+  margin-top: bl(1)
+  overflow: hidden
+  li
+    +grid(3, 3, 1)
+    float: left
+    background: hsl(0, 0, 94)
+    text-align: center
+  a
+    display: block
+    padding: bl(1) 0 0
+    margin: 0
+    &:hover
+      background: #ddd
+  strong
+    font-weight: 700
+    font-family: $serif
+    font-size: 1.1em
+    display: inline-block
+    padding: 1.5em 0
+  small
+    display: block
+    color: #666
+    padding: 0 3em bl(1)
+    margin: 0
+
+.post 
+  .teaser
+    font-family: $serif
+    font-size: 120%
+    color: adjust-color($c2, $lightness: -20, $saturation: -50)
+  .content
+    padding-bottom: bl(2)
+    overflow: hidden
+  article
+    +grid(6, 0, 4, $prepend: 1, $append: 1)
+    float: left
+    margin-bottom: 8em
+  aside
+    width: auto
+    border-top: 3px double #eee
+    clear: both
+    overflow: hidden
+    padding: 3em 0
+    ul
+      display: block
+      width: auto
+      list-style: outside none
+      padding: 0
+    li
+      +grid(3, 3)
+      float: left
+      padding: 0
+
+
+#disqus_thread
+  border-top: 1px dotted #eee
+  margin-top: bl(2)
+  padding-top: bl(2)
+#dsq-footer
+  display: none
+
+@media (max-width: 800px), (-webkit-min-device-pixel-ratio: 2)
+  .writing 
+    .posts_list
+      li
+        width: 100%
+        min-height: 0
+  .post
+    article,
+    aside
+      width: 100%
+      padding-left: 0
+      padding-right: 0

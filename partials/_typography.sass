@@ -1,0 +1,98 @@
++article-headings
+
+h1, h2, h3, h4, h5, h6
+  line-height: 1.2
+  margin: 1.25em 0 .75em
+  font-weight: 400
+  font-family: $serif
+  &+p,
+  &+ul
+    margin-top: -.75em
+
+h1
+  color: adjust-color($c2, $lightness: -35, $saturation: -30)
+
+p
+  margin-bottom: $vertical-grid
+  
+a, a:visited
+  text-decoration: none
+  color: $c1
+  &:hover
+    background: lighten(yellow, 45)
+    color: darken($c1, 15)
+  &:active
+    background: lighten(yellow, 35)
+    color: darken($c3, 30)
+
+strong
+  font-weight: bold
+  &.section
+    color: #bbb
+    display: block
+    font-family: $sans-serif
+    font-size: 12px
+    font-weight: normal
+    line-height: 16px
+    margin: 1em 0
+    text-transform: uppercase
+
+small
+  font-size: .74em
+  color: #aaa
+
+
+ul
+  padding-left: 20px
+  margin: 0 0 ceil($bl * 1.5)
+  list-style: outside disc
+
+ol
+  margin: 0 0 ceil($bl * 1.5)
+  list-style: outside decimal
+  li::before
+    font-weight: bold
+
+li
+  margin-bottom: ceil($bl * .25)
+
+blockquote
+  position: relative
+  font-family: $serif 
+  font-size: 1.35em
+  padding-left: 1em
+  &::before
+    position: absolute
+    left: 0
+    top: -.25em
+    content: "\201C"
+    font-size: 1.5em
+    font-weight: bold
+    color: #ccc
+
+
+  
+// Lists
+.link_list
+  list-style: none
+  padding: 0
+  a
+    display: block
+    padding-left: 1em
+  a::before
+    content: '»'
+    position: relative
+    left: -.5em
+    color: #aaa
+  a:hover::before
+    color: #000
+
+.writing 
+  article 
+    ul
+      padding-left: 0
+    li
+      list-style: none
+      a
+        display: block
+    

@@ -1,0 +1,156 @@
+
+
+.home
+  +nav-color(adjust-color($c1, $lightness: 5, $saturation: 10), #fff)
+
+.home  
+  .content    
+    header
+      padding: 0 0 2em
+  h1
+    padding: 0
+    font-size: 3.125em
+    font-weight: bold
+    color: #ccc
+
+// HOME: PROJECTS
+.front-projects
+  +clearfixer
+  border: 1px dotted adjust-color($c2, $saturation: -30, $lightness: 10)
+  border-width: 1px 0 0
+  list-style: none
+  margin-bottom: bl(3)
+  padding: bl(1) 0 0
+  li
+    display: block
+    position: relative
+    float: left
+    background: #444
+    background-repeat: no-repeat
+    background-position: center top
+    overflow: hidden
+    +grid(3, 1.5)
+    +transition-duration(.3s)
+    &:hover
+      +box-shadow(inset 0 0 0 1px hsla(0, 0, 0, .2), inset 0 0 15px 15px hsla(0, 0, 0, .25))
+      background-position: left top
+      span
+        +transition-duration(.3s)
+        +opacity(1)
+        
+  li:last-child
+    margin-right: 0
+
+  a
+    display: block
+    width: auto
+    padding-top: 160px
+    &:hover
+      background: none
+
+  span
+    display: block
+    +transition-duration(1s)
+    +opacity(0)
+    overflow: hidden
+    width: 100%
+    background: hsla(0, 0, 0, .8)
+    padding: bl(.5) 0
+    color: #eee
+  h2
+    font-size: 1em
+    font-weight: bold
+    font-weight: bold
+    margin: 0
+    padding: 0 bl(1)
+  p
+    margin: 0
+    padding: 0 bl(1)
+    font-size: 80%
+  
+
+// HOME: POSTS
+ul.front-posts
+  padding: 0
+  list-style: none
+  //  31.34 + 2 + 31.34 = 64.68
+  +grid(3, 1.5, 2)
+  float: left
+
+.front-posts
+  .post
+    display: block
+    float: left
+    +grid(2, 5, 1)
+    margin-bottom: 0
+    h2
+      font-size: 1.25em
+      font-weight: normal
+  .featured
+    width: 100%
+    padding-top: bl(1)
+    border: 1px dotted adjust-color($c2, $saturation: -30, $lightness: 10)
+    border-width: 1px 0
+    h2
+      margin-top: 0
+      font-size: 180%
+    p
+      font-size: 120%
+
+
+// Home: Intro
+.front-intro
+  +grid(3, 1.5, 1, $last: true, $padding-allowance: 10)
+  color: adjust-color($c2, $lightness: -30, $saturation: -45)
+  float: left
+  font-family: $serif
+  font-size: 1.1875em
+  line-height: 2
+  padding: 0 5%
+  strong
+    display: block
+  p
+    border-top: 1px dotted adjust-color($c2, $saturation: -30, $lightness: 10)
+    padding-top: bl(1)
+
+
+
+
+// Section Icons
+.home
+  strong.section
+    padding: 0 0 0 26px
+@import "icons/*.png"
+@include all-icons-sprites
+
+
+#featuredProjects
+  @extend .icons-section-design
+
+#frontPosts
+  @extend .icons-section-writing
+
+.front-intro .section
+  @extend .icons-section-about
+
+    
+// HOME: Responsive
+@media (max-width: 600px), (-webkit-min-device-pixel-ratio: 2) 
+  .front-projects,
+  .front-posts,
+  .front-intro
+    margin-bottom: 50px
+  .front-projects
+    margin-bottom: bl(5) !important
+    li
+      width: 100% !important
+      margin: 0 0 bl(1) 0
+      img
+        left: 0
+    div
+      +opacity(1)
+  .front-posts,
+  .front-posts .post,
+  .front-intro
+    width: 100%  !important
+    padding: 0
