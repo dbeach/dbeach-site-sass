@@ -1,10 +1,4 @@
 
-// Imports -------------------------------------------------------------------
-
-
-// Grid 
-
-
 // Measurements
 $vertical-grid: 18px
 $baseline: $vertical-grid
@@ -71,6 +65,8 @@ $lighttan: hsl(33, 66%, 93%)
       color: adjust-color($c2, $lightness: - (10 * $i), $saturation: - ($i * 10))
 
 
+
+// Grid 
 @mixin grid($columns, $gutter: 0, $span: 1, $last: false, $nth: false, $prepend: 0, $append: 0, $padding-allowance: 0) 
   // Single column minus gutters
 
